@@ -15,25 +15,28 @@
         android:titleTextColor="#FFFFFF"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
+
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minWidth="100dp">
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginEnd="10dp"
+            android:layout_gravity="end">
 
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btGiohang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
+                android:layout_marginLeft="10dp"
+                android:backgroundTint="#4CAF50"
+                android:focusable="false"
+                android:src="@drawable/cart3"
+                app:backgroundTint="#FCFDFC"
+                app:borderWidth="1dp"
+                app:fabSize="mini"
+                app:maxImageSize="30dp" />
         </LinearLayout>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btGiohang"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:backgroundTint="#4CAF50"
-            android:src="@drawable/cart3"
-            app:backgroundTint="#FCFDFC"
-            app:borderWidth="1dp"
-            app:fabSize="mini"
-            app:maxImageSize="30dp"
-            android:focusable="false" />
 
     </Toolbar>
 

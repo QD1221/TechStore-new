@@ -76,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewHome.setHasFixedSize(true);
         recyclerViewHome.setLayoutManager(new GridLayoutManager(getApplicationContext(),2));
         recyclerViewHome.setAdapter(sanphamAdapter);
+
+        tbHome.setTitle("Trang Chủ");
         Search();
         Giohang();
         if (manggiohang !=null){
