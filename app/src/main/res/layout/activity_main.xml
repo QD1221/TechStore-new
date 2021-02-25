@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activity.MainActivity">
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/dlHome"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="5">
+            <Toolbar
+                android:id="@+id/tbHome"
+                android:title="Trang chủ"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="#4CAF50">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="100dp">
+
+
+
+                </LinearLayout>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/btSearch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:backgroundTint="#4CAF50"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/search"
+                    app:backgroundTint="#FCFDFC"
+                    app:borderWidth="1dp"
+                    app:fabSize="mini"
+                    app:maxImageSize="30dp"
+                    android:focusable="false" />
+
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/btGiohang"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:backgroundTint="#4CAF50"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/cart3"
+                        app:backgroundTint="#FCFDFC"
+                        app:borderWidth="1dp"
+                        app:fabSize="mini"
+                        app:maxImageSize="30dp"
+                        android:focusable="false" />
+
+            </Toolbar>
+
+
+        </LinearLayout>
+            <ViewFlipper
+                android:id="@+id/vfHome"
+                android:layout_width="match_parent"
+                android:background="#F4F1F0"
+                android:layout_height="150dp">
+
+            </ViewFlipper>
+            <LinearLayout
+                android:background="#4CAF50"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:fontFamily="sans-serif"
+                    android:freezesText="false"
+                    android:text="SẢN PHẨM MỚI NHẤT"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold">
+
+                </TextView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvHome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nvHome"
+            android:layout_gravity="start"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/images"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ivbgnav"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/images" />
+                <ListView
+                    android:id="@+id/lvHome"
+                    android:layout_below="@id/ivbgnav"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </ListView>
+            </RelativeLayout>
+
+
+
+        </com.google.android.material.navigation.NavigationView>
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</LinearLayout>

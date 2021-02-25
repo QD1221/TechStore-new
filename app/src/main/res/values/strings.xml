@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">TechStore</string>
+    <string name="title_activity_thongtin">Map</string>
+    <string name="search">T</string>
+    <string name="git">
+        QD1221
+    </string>
+    <string name="fb">
+        Quang
+    </string>
+    <string name="mail">
+        qd12122000@gmail.com
+    </string>
+</resources>
