@@ -53,6 +53,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.DangNhapActivity"/>
+        <activity android:name=".activity.Test">
+
+        </activity>
     </application>
 
 </manifest>

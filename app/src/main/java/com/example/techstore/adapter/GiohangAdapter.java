@@ -52,7 +52,7 @@ public class GiohangAdapter extends BaseAdapter {
     }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder = null;
+        ViewHolder viewHolder;
         if (convertView == null){
             viewHolder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -75,6 +75,7 @@ public class GiohangAdapter extends BaseAdapter {
                 .placeholder(R.drawable.noimg)
                 .error(R.drawable.error)
                 .into(viewHolder.ivGiohang);
+
         viewHolder.btGiatri.setText(giohang.getSoluongsp() + "");
         int sl = Integer.parseInt(viewHolder.btGiatri.getText().toString());
         if (sl>=10){
