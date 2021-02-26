@@ -45,14 +45,14 @@ public class Test extends AppCompatActivity {
         collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.white));
 
         toolbar = findViewById(R.id.toolbartest);
-        ivChitiet = findViewById(R.id.ivtest);
-        tvTen = findViewById(R.id.tvtentest);
-        tvGia = findViewById(R.id.tvgiatest);
-        tvChitiet = findViewById(R.id.tvchitiettest);
-        cong = findViewById(R.id.bcongtest);
-        tru = findViewById(R.id.btrutest);
-        giatri = findViewById(R.id.bgiatritest);
-        btdatmua = findViewById(R.id.bdatmuatest);
+//        ivChitiet = findViewById(R.id.ivtest);
+//        tvTen = findViewById(R.id.tvtentest);
+//        tvGia = findViewById(R.id.tvgiatest);
+//        tvChitiet = findViewById(R.id.tvchitiettest);
+//        cong = findViewById(R.id.bcongtest);
+//        tru = findViewById(R.id.btrutest);
+//        giatri = findViewById(R.id.bgiatritest);
+//        btdatmua = findViewById(R.id.bdatmuatest);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);

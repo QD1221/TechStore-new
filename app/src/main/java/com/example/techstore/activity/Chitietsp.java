@@ -1,6 +1,7 @@
 package com.example.techstore.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,11 +13,11 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.example.techstore.R;
 import com.example.techstore.model.Giohang;
 import com.example.techstore.model.Sanpham;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 
@@ -24,12 +25,14 @@ import java.text.DecimalFormat;
 
 public class Chitietsp extends AppCompatActivity {
 
-    Toolbar tbChitiet;
+    Toolbar toolbar;
+    CollapsingToolbarLayout collapsingToolbarLayout;
+
     ImageView ivChitiet;
-    TextView tvTen,tvGia, tvMota;
+    TextView tvTen,tvGia, tvMota, btGiatriCt;
     Spinner spinner;
     Button btdatmua;
-    Button btTruCt, btGiatriCt, btCongCt;
+    Button btTruCt, btCongCt;
 
     FloatingActionButton btGiohang;
 
@@ -44,7 +47,26 @@ public class Chitietsp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chitietsp);
-        tbChitiet = findViewById(R.id.tbChitietsp);
+
+        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        collapsingToolbarLayout.setTitle("Chi tiết sản phẩm");
+        collapsingToolbarLayout.setCollapsedTitleGravity(View.TEXT_ALIGNMENT_CENTER);
+        collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(R.color.transparent));
+        collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.white));
+
+        toolbar = findViewById(R.id.toolbartest);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         ivChitiet = findViewById(R.id.ivChitietsp);
         tvTen = findViewById(R.id.tvtenchitietsp);
         tvGia = findViewById(R.id.tvgiachitietsp);
@@ -56,8 +78,6 @@ public class Chitietsp extends AppCompatActivity {
         btCongCt = findViewById(R.id.btCongCt);
 
 
-
-        ActionToolbar();
         GetInformation();
 //        CatchEventSpinner();
         EventButton();
@@ -182,9 +202,5 @@ public class Chitietsp extends AppCompatActivity {
                 .into(ivChitiet);
     }
 
-    private void ActionToolbar(){
-        tbChitiet.setNavigationIcon(R.drawable.ic_back);
-        tbChitiet.setNavigationOnClickListener(v -> finish());
-    }
 
 }
