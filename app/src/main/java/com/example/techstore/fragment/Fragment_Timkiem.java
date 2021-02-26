@@ -33,12 +33,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.view.View.GONE;
+
 
 public class Fragment_Timkiem extends Fragment {
     View view;
     Toolbar tbsearch;
     RecyclerView rvsearch;
-    TextView tvkocodulieu;
+    TextView tvkocodulieu, tvsearch;
     SearchSanphamAdapter searchSanphamAdapter;
 
     @Nullable
@@ -48,8 +50,12 @@ public class Fragment_Timkiem extends Fragment {
         tbsearch = view.findViewById(R.id.tbsearch);
         rvsearch = view.findViewById(R.id.rvsearch);
         tvkocodulieu = view.findViewById(R.id.tvkocodulieu);
+        tvsearch = view.findViewById(R.id.tvsearch);
         ((AppCompatActivity)getActivity()).setSupportActionBar(tbsearch);
-        tbsearch.setTitle("");
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+        tbsearch.setTitle("Tìm kiếm");
         setHasOptionsMenu(true);
         return view;
     }
@@ -90,13 +96,16 @@ public class Fragment_Timkiem extends Fragment {
                 if (mangsanpham.size() >0){
                     searchSanphamAdapter = new SearchSanphamAdapter(getActivity(), mangsanpham);
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+                    tvsearch.setVisibility(View.VISIBLE);
+                    tvsearch.setText("Có " + String.valueOf(mangsanpham.size()) + " sản phẩm được tìm thấy");
                     rvsearch.setLayoutManager(linearLayoutManager);
                     rvsearch.setAdapter(searchSanphamAdapter);
-                    tvkocodulieu.setVisibility(View.GONE);
+                    tvkocodulieu.setVisibility(GONE);
                     rvsearch.setVisibility(View.VISIBLE);
                 }else {
-                    rvsearch.setVisibility(View.GONE);
+                    rvsearch.setVisibility(GONE);
                     tvkocodulieu.setVisibility(View.VISIBLE);
+                    tvsearch.setVisibility(GONE);
                 }
             }
 

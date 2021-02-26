@@ -25,66 +25,86 @@
     <LinearLayout
         android:orientation="vertical"
         android:gravity="center"
-        android:layout_margin="5dp"
         android:layout_weight="7"
+        android:layout_margin="5dp"
         android:layout_width="0dp"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/tvTengiohang"
-            android:textStyle="bold"
-            android:textColor="#2196F3"
-            android:text="Tên hàng"
-            android:maxLines="1"
-            android:fontFamily="sans-serif"
-            android:textSize="18sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/tvGiagiohang"
-            android:layout_margin="5dp"
-            android:textColor="#FF5722"
-            android:textSize="18sp"
-            android:fontFamily="sans-serif"
-            android:text="Giá hàng"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+        android:layout_height="match_parent">
         <LinearLayout
-            android:gravity="center"
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tvTengiohang"
+                    android:textStyle="bold"
+                    android:textColor="#2196F3"
+                    android:text="Tên hàng"
+                    android:textAlignment="center"
+                    android:maxLines="1"
+                    android:fontFamily="sans-serif"
+                    android:textSize="18sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/tvGiagiohang"
+                    android:layout_margin="5dp"
+                    android:textColor="#FF5722"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif"
+                    android:text="Giá hàng"
+                    android:textAlignment="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
             <Button
-                android:id="@+id/btTru"
-                android:text="-"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif"
-                android:focusable="false"
-                android:background="#8BC34A"
-                android:layout_margin="5dp"
-                android:layout_width="45dp"
-                android:layout_height="wrap_content"/>
-            <Button
-                android:id="@+id/btGiatri"
-                android:background="@null"
-                android:text="1"
-                android:textSize="18dp"
-                android:fontFamily="sans-serif"
-                android:textColor="@color/black"
-                android:focusable="false"
-                android:layout_margin="5dp"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"/>
-            <Button
-                android:id="@+id/btCong"
-                android:text="+"
-                android:fontFamily="sans-serif"
-                android:focusable="false"
-                android:background="#8BC34A"
-                android:layout_margin="5dp"
-                android:layout_width="45dp"
-                android:layout_height="wrap_content"/>
+                android:id="@+id/btxoa"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="4dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/ic_delete" />
+        </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btTru"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ic_minus" />
+
+                <TextView
+                    android:id="@+id/btGiatri"
+                    android:layout_width="50dp"
+                    android:layout_height="53dp"
+                    android:fontFamily="@font/rubik_medium"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/btCong"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ic_plus" />
+            </LinearLayout>
+
 
         </LinearLayout>
-    </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>

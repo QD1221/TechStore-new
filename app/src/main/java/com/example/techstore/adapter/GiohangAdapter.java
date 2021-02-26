@@ -1,6 +1,10 @@
 package com.example.techstore.adapter;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +13,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+
 import com.example.techstore.R;
 import com.example.techstore.activity.MainActivity;
 import com.example.techstore.model.Giohang;
@@ -16,6 +22,8 @@ import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+
+import static com.example.techstore.activity.MainActivity.manggiohang;
 
 public class GiohangAdapter extends BaseAdapter {
     Context context;
@@ -46,9 +54,9 @@ public class GiohangAdapter extends BaseAdapter {
     }
 
     public class ViewHolder{
-        public TextView tvTengiohang,tvGiagiohang;
+        public TextView tvTengiohang,tvGiagiohang, btGiatri, tvThongbao, tvTongtien;
         public ImageView ivGiohang;
-        public Button btTru, btGiatri, btCong;
+        public Button btTru, btCong, btXoa;
     }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -59,14 +67,50 @@ public class GiohangAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.dong_giohang,null);
             viewHolder.tvTengiohang = convertView.findViewById(R.id.tvTengiohang);
             viewHolder.tvGiagiohang = convertView.findViewById(R.id.tvGiagiohang);
+            viewHolder.tvThongbao = convertView.findViewById(R.id.tvThongbao);
+            viewHolder.tvTongtien = convertView.findViewById(R.id.tvTongtien);
             viewHolder.ivGiohang = convertView.findViewById(R.id.ivGiohang);
             viewHolder.btTru = convertView.findViewById(R.id.btTru);
             viewHolder.btGiatri = convertView.findViewById(R.id.btGiatri);
             viewHolder.btCong = convertView.findViewById(R.id.btCong);
+            viewHolder.btXoa = convertView.findViewById(R.id.btxoa);
+
+            viewHolder.btXoa.setTag(position);
+            viewHolder.btXoa.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+                    builder.setTitle("Xác nhận xóa sản phẩm");
+                    builder.setIcon(ContextCompat.getDrawable(context,R.drawable.warning2));
+                    builder.setMessage("Bạn có chắc muốn xóa sản phẩm này?");
+                    builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            manggiohang.remove(position);
+                            notifyDataSetChanged();
+                            ((Activity)context).recreate();
+                        }
+                    });
+
+                    builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            notifyDataSetChanged();
+                        }
+                    });
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+
+
+                }
+            });
             convertView.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
+
         Giohang giohang = (Giohang) getItem(position);
         viewHolder.tvTengiohang.setText(giohang.getTensp());
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
@@ -88,6 +132,7 @@ public class GiohangAdapter extends BaseAdapter {
             viewHolder.btCong.setVisibility(View.VISIBLE);
         }
         final ViewHolder finalViewHolder = viewHolder;
+
         viewHolder.btCong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,6 +156,7 @@ public class GiohangAdapter extends BaseAdapter {
                 }
             }
         });
+
         viewHolder.btTru.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

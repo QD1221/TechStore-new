@@ -51,10 +51,6 @@ public class Giohang extends AppCompatActivity {
         CatchOnItemListView();
         EventButton();
 
-
-        Toast.makeText(this, "Ấn giữ vào sản phẩm để xóa khỏi giỏ hàng", Toast.LENGTH_LONG).show();
-
-
     }
 
     private void EventButton() {
@@ -78,7 +74,7 @@ public class Giohang extends AppCompatActivity {
         });
     }
 
-    private void CatchOnItemListView() {
+    public void CatchOnItemListView() {
         lvGiohang.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {

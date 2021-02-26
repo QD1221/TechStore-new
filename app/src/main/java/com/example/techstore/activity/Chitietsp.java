@@ -162,7 +162,7 @@ public class Chitietsp extends AppCompatActivity {
                     }
                 }
                 if (exists == false){
-                    int soluong = Integer.parseInt(spinner.getSelectedItem().toString());
+                    int soluong = Integer.parseInt(btGiatriCt.getText().toString());
                     long Giamoi = soluong * Giachitiet;
                     MainActivity.manggiohang.add(new Giohang(id,Tenchitiet,Giamoi,Hinhanhchitiet,soluong));
                 }
