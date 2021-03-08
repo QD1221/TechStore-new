@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primaryColor"
     tools:context=".activity.LaptopActivity"
     android:orientation="vertical">
     <Toolbar
-        android:background="#4CAF50"
         android:id="@+id/tbLaptop"
+        android:background="@color/primaryColor"
         android:title="Laptop"
+        android:titleTextColor="@color/primaryTextColor"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
 
@@ -28,7 +30,7 @@
                 android:backgroundTint="#4CAF50"
                 android:focusable="false"
                 android:src="@drawable/cart3"
-                app:backgroundTint="#FCFDFC"
+                app:backgroundTint="@color/secondaryColor"
                 app:borderWidth="1dp"
                 app:fabSize="mini"
                 app:maxImageSize="30dp" />

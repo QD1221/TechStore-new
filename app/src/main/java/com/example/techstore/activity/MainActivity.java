@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     ListView listViewHome;
     DrawerLayout drawerLayout;
     FloatingActionButton btGiohang, btSearch;
+    ImageView ivbgnav;
     ArrayList<Loaisp> mangloaisp;
     LoaispAdapter loaispAdapter;
     int id = 0;
@@ -67,14 +69,19 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.dlHome);
         btGiohang = findViewById(R.id.btGiohang);
         btSearch = findViewById(R.id.btSearch);
+        ivbgnav = findViewById(R.id.ivbgnav);
+        Picasso.get().load("https://channel.mediacdn.vn/thumb_w/640/2019/11/9/photo-1-15732726431201850009940.jpg").into(ivbgnav);
         mangloaisp = new ArrayList<>();
         mangloaisp.add(0, new Loaisp(0, "Trang Chủ","https://img.icons8.com/clouds/2x/cottage.png"));
         loaispAdapter = new LoaispAdapter(mangloaisp, getApplicationContext());
         listViewHome.setAdapter(loaispAdapter);
         mangsanpham = new ArrayList<>();
         sanphamAdapter = new SanphamAdapter(getApplicationContext(),mangsanpham);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+
         recyclerViewHome.setHasFixedSize(true);
-        recyclerViewHome.setLayoutManager(new GridLayoutManager(getApplicationContext(),2));
+        recyclerViewHome.setLayoutManager(layoutManager);
         recyclerViewHome.setAdapter(sanphamAdapter);
 
         tbHome.setTitle("Trang Chủ");

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:orientation="horizontal"
     android:layout_height="match_parent"
-    android:background="#FFFFFFFF"
+    android:background="@color/primaryColor"
     android:weightSum="10"
     android:gravity="center">
 
@@ -32,12 +32,11 @@
             android:id="@+id/tvloaisp"
             android:layout_width="142dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="10dp"
             android:fontFamily="sans-serif"
-            android:gravity="center"
             android:text="Loại sản phẩm"
-            android:textColor="#4CAF50"
+            android:textColor="@color/primaryTextColor"
             android:textSize="20dp" />
     </LinearLayout>
 

@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.cardview.widget.CardView
         app:cardCornerRadius="5dp"
-        app:cardBackgroundColor="#ffffff"
+        app:cardBackgroundColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
@@ -17,6 +17,7 @@
                 android:layout_margin="12dp"
                 android:adjustViewBounds="true"
                 android:id="@+id/ivDienthoai"
+                android:scaleType="fitXY"
                 android:layout_width="100dp"
                 android:layout_height="100dp"/>
             <LinearLayout
