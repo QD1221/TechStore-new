@@ -12,19 +12,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.techstore.R;
-import com.example.techstore.activity.Chitietsp;
+import com.example.techstore.activity.ChitietSanphamActivity;
 import com.example.techstore.model.Sanpham;
-import com.example.techstore.ultil.CheckConnection;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class SanphamAdapter extends RecyclerView.Adapter<SanphamAdapter.ItemHolder> {
+public class SanphambanchayAdapter extends RecyclerView.Adapter<SanphambanchayAdapter.ItemHolder> {
     Context context;
     ArrayList<Sanpham> arraysanpham;
 
-    public SanphamAdapter(Context context, ArrayList<Sanpham> arraysanpham) {
+    public SanphambanchayAdapter(Context context, ArrayList<Sanpham> arraysanpham) {
         this.context = context;
         this.arraysanpham = arraysanpham;
     }
@@ -32,7 +31,7 @@ public class SanphamAdapter extends RecyclerView.Adapter<SanphamAdapter.ItemHold
     @NonNull
     @Override
     public ItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.dong_sanphammoi,null);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.dong_sanpham_banchay,null);
         ItemHolder itemHolder = new ItemHolder(v);
         return itemHolder;
     }
@@ -66,7 +65,7 @@ public class SanphamAdapter extends RecyclerView.Adapter<SanphamAdapter.ItemHold
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context, Chitietsp.class);
+                    Intent intent = new Intent(context, ChitietSanphamActivity.class);
                     intent.putExtra("thongtinsanpham",arraysanpham.get(getPosition()));
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);

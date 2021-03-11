@@ -2,15 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#4CAF50"
+    android:background="@color/primaryColor"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.SearchspActivity">
+    tools:context=".activity.SearchSanPhamActivity">
     <fragment
         android:name="com.example.techstore.fragment.Fragment_Timkiem"
         android:id="@+id/ftimkiem"
-        android:background="#E4E1E1"
+        android:background="@color/primaryColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

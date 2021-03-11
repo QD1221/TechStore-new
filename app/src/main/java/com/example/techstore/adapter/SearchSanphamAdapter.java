@@ -1,6 +1,5 @@
 package com.example.techstore.adapter;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -13,9 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.techstore.R;
-import com.example.techstore.activity.Chitietsp;
+import com.example.techstore.activity.ChitietSanphamActivity;
 import com.example.techstore.model.Sanpham;
-import com.example.techstore.ultil.CheckConnection;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
@@ -68,7 +66,7 @@ public class SearchSanphamAdapter extends RecyclerView.Adapter<SearchSanphamAdap
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context, Chitietsp.class);
+                    Intent intent = new Intent(context, ChitietSanphamActivity.class);
                     intent.putExtra("thongtinsanpham",mangsanpham.get(getPosition()));
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);

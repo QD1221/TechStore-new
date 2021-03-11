@@ -2,17 +2,20 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primaryColor"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/ablsearch"
-        android:background="#4CAF50"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tbsearch"
+            android:title="Tìm kiếm sản phẩm"
+            android:background="@color/primaryColor"
+            android:titleTextColor="@color/primaryTextColor"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize">
+            android:layout_height="wrap_content">
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -43,15 +46,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="16dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginBottom="16dp">
 
     </androidx.recyclerview.widget.RecyclerView>
     <TextView
         android:id="@+id/tvkocodulieu"
         android:gravity="center"
-        android:textColor="#F8F4F4"
         android:visibility="gone"
         android:text="Không có dữ liệu sản phẩm"
+        android:textColor="#F8F4F4"
         android:textSize="20sp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

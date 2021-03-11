@@ -2,13 +2,34 @@
     <string name="app_name">TechStore</string>
     <string name="title_activity_thongtin">Map</string>
     <string name="search">T</string>
-    <string name="git">
-        QD1221
-    </string>
-    <string name="fb">
-        Quang
-    </string>
-    <string name="mail">
-        qd12122000@gmail.com
-    </string>
+    <string name="git">QD1221</string>
+    <string name="fb">Quang</string>
+    <string name="mail">qd12122000@gmail.com</string>
+
+    <string name="facebook_app_id">1358342334543437</string>
+    <string name="fb_login_protocol_scheme">fb1358342334543437</string>
+    <string name="phienban">Phiên bản</string>
+    <string name="dangtai">Đang tải…</string>
+    <string name="tencongty">QD</string>
+    <string name="email">Email</string>
+    <string name="matkhau">Mật khẩu</string>
+    <string name="dangnhap">Đăng nhập</string>
+    <string name="hoac">Hoặc</string>
+    <string name="dangnhapfb">Đăng nhập bằng Facebook</string>
+    <string name="dangnhapgg">Đăng nhập bằng Google</string>
+    <string name="quenmk">Quên mật khẩu?</string>
+    <string name="dky"><u>Đăng ký</u></string>
+    <string name="matkhau2">Nhập lại mật khẩu</string>
+    <string name="thongbaoloidk">Bạn chưa nhập </string>
+    <string name="thongbaonhaplaimk">Mật khẩu không khớp, vui lòng nhập lại</string>
+    <string name="thongbaodkythanhcong">Đăng ký tài khoản thành công</string>
+    <string name="thongbaodkythatbai">Đăng ký tài khoản thất bại</string>
+    <string name="dangxuly">Đang xử lý</string>
+    <string name="thongbaodnthatbai">Tài khoản không hợp lệ! </string>
+    <string name="khoiphucmk">Khôi phục mật khẩu</string>
+    <string name="chuoikhoiphucmk">Vui lòng nhập địa chỉ email vào khung bên dưới để tiến hành khôi phục mật khẩu</string>
+    <string name="gui">Đồng ý</string>
+    <string name="kophaithanhvien">Chưa là thành viên?</string>
+    <string name="thongbaoemailkohople">Email không hợp lệ!</string>
+    <string name="thongbaoguiemailthanhcong">Đã gửi đường dẫn khôi phục mật khẩu đến email</string>
 </resources>

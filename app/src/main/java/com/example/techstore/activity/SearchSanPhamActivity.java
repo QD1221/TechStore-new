@@ -10,7 +10,7 @@ import android.view.View;
 import com.example.techstore.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class SearchspActivity extends AppCompatActivity {
+public class SearchSanPhamActivity extends AppCompatActivity {
     Toolbar tbsearch;
 
     @Override

@@ -7,14 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toolbar;
 
@@ -23,7 +18,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.techstore.R;
-import com.example.techstore.adapter.DienthoaiAdapter;
 import com.example.techstore.adapter.LaptopAdapter;
 import com.example.techstore.model.Sanpham;
 import com.example.techstore.ultil.CheckConnection;
@@ -80,7 +74,7 @@ public class LaptopActivity extends AppCompatActivity {
 
     public void Giohang(){
         btGiohang.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(),Giohang.class);
+            Intent intent = new Intent(getApplicationContext(), GiohangActivity.class);
             startActivity(intent);
         });
     }
@@ -88,7 +82,7 @@ public class LaptopActivity extends AppCompatActivity {
 
     private void LoadMoreData() {
         lvLaptop.setOnItemClickListener((parent, view, i, l) -> {
-            Intent intent = new Intent(getApplicationContext(),Chitietsp.class);
+            Intent intent = new Intent(getApplicationContext(), ChitietSanphamActivity.class);
             intent.putExtra("thongtinsanpham", mangLaptop.get(i));
             startActivity(intent);
         });

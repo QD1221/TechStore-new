@@ -9,16 +9,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.techstore.R;
-import com.example.techstore.model.Loaisp;
+import com.example.techstore.model.DanhmucSanpham;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class LoaispAdapter extends BaseAdapter {
-    ArrayList<Loaisp> arrayListloaisp;
+public class DanhmucAdapter extends BaseAdapter {
+    ArrayList<DanhmucSanpham> arrayListloaisp;
     Context context;
 
-    public LoaispAdapter(ArrayList<Loaisp> arrayListloaisp, Context context) {
+    public DanhmucAdapter(ArrayList<DanhmucSanpham> arrayListloaisp, Context context) {
         this.arrayListloaisp = arrayListloaisp;
         this.context = context;
     }
@@ -55,12 +55,12 @@ public class LoaispAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        Loaisp loaisp = (Loaisp) getItem(i);
-        viewHolder.tvtenloaisp.setText(loaisp.getTenloaisp());
+        DanhmucSanpham danhmucSanpham = (DanhmucSanpham) getItem(i);
+        viewHolder.tvtenloaisp.setText(danhmucSanpham.getTenloaisp());
         Picasso.get()
-                .load(loaisp.getHinhanhloaisp())
-                .placeholder(R.drawable.noimg)
-                .error(R.drawable.error)
+                .load(danhmucSanpham.getHinhanhloaisp())
+                .placeholder(R.drawable.no_image)
+                .error(R.drawable.error2)
                 .fit()
                 .into(viewHolder.ivloaisp);
 

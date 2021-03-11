@@ -5,14 +5,11 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.techstore.R;
 import com.example.techstore.model.Giohang;
@@ -23,14 +20,13 @@ import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
 
-public class Chitietsp extends AppCompatActivity {
+public class ChitietSanphamActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     CollapsingToolbarLayout collapsingToolbarLayout;
 
     ImageView ivChitiet;
     TextView tvTen,tvGia, tvMota, btGiatriCt;
-    Spinner spinner;
     Button btdatmua;
     Button btTruCt, btCongCt;
 
@@ -42,13 +38,14 @@ public class Chitietsp extends AppCompatActivity {
     String Hinhanhchitiet;
     String Motachitiet;
     int idsanpham;
+    int slmoinhat = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chitietsp);
 
-        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        collapsingToolbarLayout = findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle("Chi tiết sản phẩm");
         collapsingToolbarLayout.setCollapsedTitleGravity(View.TEXT_ALIGNMENT_CENTER);
         collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(R.color.transparent));
@@ -86,7 +83,7 @@ public class Chitietsp extends AppCompatActivity {
         btCongCt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int slmoinhat = Integer.parseInt(btGiatriCt.getText().toString()) +1;
+                slmoinhat = Integer.parseInt(btGiatriCt.getText().toString()) +1;
 
                 if (slmoinhat > 9){
                     btCongCt.setVisibility(View.INVISIBLE);
@@ -104,10 +101,12 @@ public class Chitietsp extends AppCompatActivity {
         btTruCt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int slmoinhat = Integer.parseInt(btGiatriCt.getText().toString()) - 1;
+                if (slmoinhat > 1){
+                    slmoinhat = Integer.parseInt(btGiatriCt.getText().toString()) - 1;
+                }
 
 
-                if (slmoinhat <2){
+                if (slmoinhat <= 1){
                     btTruCt.setVisibility(View.INVISIBLE);
                     btCongCt.setVisibility(View.VISIBLE);
                     btGiatriCt.setText(String.valueOf(slmoinhat));
@@ -126,7 +125,7 @@ public class Chitietsp extends AppCompatActivity {
 
     public void Giohang(){
         btGiohang.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), com.example.techstore.activity.Giohang.class);
+            Intent intent = new Intent(getApplicationContext(), GiohangActivity.class);
             startActivity(intent);
         });
     }
@@ -171,7 +170,7 @@ public class Chitietsp extends AppCompatActivity {
                 long Giamoi = soluong * Giachitiet;
                 MainActivity.manggiohang.add(new Giohang(id,Tenchitiet,Giamoi,Hinhanhchitiet,soluong));
             }
-            Intent intent = new Intent(getApplicationContext(), com.example.techstore.activity.Giohang.class);
+            Intent intent = new Intent(getApplicationContext(), GiohangActivity.class);
             startActivity(intent);
         });
     }

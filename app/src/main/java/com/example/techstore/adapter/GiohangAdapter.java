@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,14 +15,14 @@ import android.widget.TextView;
 import androidx.core.content.ContextCompat;
 
 import com.example.techstore.R;
+import com.example.techstore.activity.GiohangActivity;
 import com.example.techstore.activity.MainActivity;
 import com.example.techstore.model.Giohang;
+import com.example.techstore.model.Sanpham;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-
-import static com.example.techstore.activity.MainActivity.manggiohang;
 
 public class GiohangAdapter extends BaseAdapter {
     Context context;
@@ -144,7 +143,7 @@ public class GiohangAdapter extends BaseAdapter {
                 MainActivity.manggiohang.get(position).setGiasp(giamoinhat);
                 DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
                 finalViewHolder.tvGiagiohang.setText(decimalFormat.format(giamoinhat)+"₫");
-                com.example.techstore.activity.Giohang.EventUtil();
+                GiohangActivity.EventUtil();
                 if (slmoinhat > 9){
                     finalViewHolder.btCong.setVisibility(View.INVISIBLE);
                     finalViewHolder.btTru.setVisibility(View.VISIBLE);
@@ -168,7 +167,7 @@ public class GiohangAdapter extends BaseAdapter {
                 MainActivity.manggiohang.get(position).setGiasp(giamoinhat);
                 DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
                 finalViewHolder.tvGiagiohang.setText(decimalFormat.format(giamoinhat)+"₫");
-                com.example.techstore.activity.Giohang.EventUtil();
+                GiohangActivity.EventUtil();
                 if (slmoinhat <2){
                     finalViewHolder.btTru.setVisibility(View.INVISIBLE);
                     finalViewHolder.btCong.setVisibility(View.VISIBLE);

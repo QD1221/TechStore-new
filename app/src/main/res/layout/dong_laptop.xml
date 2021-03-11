@@ -2,21 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/primaryColor">
     <androidx.cardview.widget.CardView
-        app:cardCornerRadius="5dp"
+        app:cardCornerRadius="15dp"
         app:cardBackgroundColor="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true">
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center">
             <ImageView
-                android:layout_margin="12dp"
-                android:adjustViewBounds="true"
                 android:id="@+id/ivLaptop"
+                android:layout_margin="10dp"
+                android:adjustViewBounds="true"
                 android:layout_width="100dp"
                 android:layout_height="100dp"/>
             <LinearLayout
@@ -26,30 +30,28 @@
                 android:layout_height="wrap_content">
                 <TextView
                     android:id="@+id/tvLaptop"
-                    android:textStyle="bold"
-                    android:layout_margin="5dp"
-                    android:textColor="#2196F3"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/black"
                     android:text="Tên sản phẩm"
-                    android:fontFamily="sans-serif"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
+                    android:maxLines="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <TextView
                     android:id="@+id/tvGialaptop"
-                    android:layout_margin="5dp"
-                    android:textColor="#FF5722"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/primaryColor"
                     android:text="Giá sản phẩm"
-                    android:textSize="20sp"
-                    android:fontFamily="sans-serif"
+                    android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <TextView
                     android:id="@+id/tvMotalaptop"
-                    android:layout_margin="5dp"
-                    android:textColor="#383D42"
-                    android:fontFamily="sans-serif"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/dark_gray"
                     android:text="Mô tả laptop"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </LinearLayout>

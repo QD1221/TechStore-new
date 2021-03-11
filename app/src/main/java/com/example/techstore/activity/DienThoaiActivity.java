@@ -2,7 +2,6 @@ package com.example.techstore.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -10,8 +9,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -83,7 +80,7 @@ public class DienThoaiActivity extends AppCompatActivity {
 
     public void Giohang(){
         btGiohang.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(),Giohang.class);
+            Intent intent = new Intent(getApplicationContext(), GiohangActivity.class);
             startActivity(intent);
         });
     }
@@ -93,7 +90,7 @@ public class DienThoaiActivity extends AppCompatActivity {
         lvDienthoai.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
-                Intent intent = new Intent(getApplicationContext(),Chitietsp.class);
+                Intent intent = new Intent(getApplicationContext(), ChitietSanphamActivity.class);
                 intent.putExtra("thongtinsanpham", mangDienthoai.get(i));
                 startActivity(intent);
             }

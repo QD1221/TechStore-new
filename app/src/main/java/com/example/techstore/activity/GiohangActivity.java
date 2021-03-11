@@ -11,23 +11,21 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.techstore.R;
 import com.example.techstore.adapter.GiohangAdapter;
 import com.example.techstore.ultil.CheckConnection;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.text.DecimalFormat;
 
 import static com.example.techstore.activity.MainActivity.manggiohang;
 
-public class Giohang extends AppCompatActivity {
+public class GiohangActivity extends AppCompatActivity {
     ListView lvGiohang;
     TextView tvThongbao;
     static TextView tvTongtien;
-    Button btThanhtoan,btTieptucmua;
+    Button btThanhtoan;
     Toolbar tbGiohang;
     GiohangAdapter giohangAdapter;
 
@@ -40,9 +38,8 @@ public class Giohang extends AppCompatActivity {
         tvThongbao = findViewById(R.id.tvThongbao);
         tvTongtien = findViewById(R.id.tvTongtien);
         btThanhtoan = findViewById(R.id.btThanhtoangiohang);
-        btTieptucmua = findViewById(R.id.btTieptucmuahang);
         tbGiohang = findViewById(R.id.tbGiohang);
-        giohangAdapter= new GiohangAdapter(Giohang.this, manggiohang);
+        giohangAdapter= new GiohangAdapter(GiohangActivity.this, manggiohang);
         lvGiohang.setAdapter(giohangAdapter);
 
         ActionToolbar();
@@ -54,18 +51,12 @@ public class Giohang extends AppCompatActivity {
     }
 
     private void EventButton() {
-        btTieptucmua.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(intent);
-            }
-        });
+
         btThanhtoan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (manggiohang.size() >0){
-                    Intent intent = new Intent(getApplicationContext(), ThongtinKH.class);
+                    Intent intent = new Intent(getApplicationContext(), ThongtinKHActivity.class);
                     startActivity(intent);
                 }else {
                     CheckConnection.ShowToast_Short(getApplicationContext(),"Chưa có sản phẩm để thanh toán");
@@ -78,7 +69,7 @@ public class Giohang extends AppCompatActivity {
         lvGiohang.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(Giohang.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(GiohangActivity.this);
                 builder.setTitle("Xác nhận xóa sản phẩm");
                 builder.setMessage("Bạn có chắc muốn xóa sản phẩm này?");
                 builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {

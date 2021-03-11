@@ -171,14 +171,14 @@
             android:orientation="horizontal">
             <Button
                 android:id="@+id/btTruCt"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:background="@drawable/ic_minus" />
 
             <TextView
                 android:id="@+id/btGiatriCt"
-                android:layout_width="50dp"
-                android:layout_height="53dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:fontFamily="@font/rubik_medium"
                 android:gravity="center"
                 android:text="1"
@@ -187,8 +187,8 @@
 
             <Button
                 android:id="@+id/btCongCt"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:background="@drawable/ic_plus" />
         </LinearLayout>
 
@@ -200,10 +200,10 @@
             android:layout_weight="1"
             android:background="@drawable/detail_page_cart_button_bg"
             android:drawableRight="@drawable/ic_arrow_forward_black_24dp"
-            android:fontFamily="@font/rubik_medium"
             android:padding="16dp"
             android:paddingRight="16dp"
-            android:text="Add to Cart"
+            android:text="Thêm giỏ hàng"
+            android:textSize="18sp"
             android:textAllCaps="false"
             android:textColor="#FFFFFF" />
     </LinearLayout>

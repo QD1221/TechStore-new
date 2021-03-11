@@ -4,11 +4,11 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#10be58"
+    android:background="@color/primaryColor"
     tools:context="activity.LienheActivity">
     <Toolbar
         android:id="@+id/tbLienhe"
-        android:background="#10be58"
+        android:background="@color/primaryColor"
         android:titleTextColor="#ffffff"
         android:title="Liên hệ"
         android:layout_width="match_parent"

@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -29,10 +30,11 @@ import java.util.Map;
 
 import static java.lang.Integer.parseInt;
 
-public class ThongtinKH extends AppCompatActivity {
+public class ThongtinKHActivity extends AppCompatActivity {
 
     EditText etTenKH,etSDT,etEmail;
-    Button btXacnhan,btTrove;
+    Button btXacnhan;
+    ImageView btTrove;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -7,8 +7,8 @@
     <Toolbar
         android:id="@+id/tbThongtin"
         android:title="Thông tin"
-        android:background="#4CAF50"
-        android:titleTextColor="#FFFFFF"
+        android:background="@color/primaryColor"
+        android:titleTextColor="@color/primaryTextColor"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
 

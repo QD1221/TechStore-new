@@ -33,7 +33,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center|right"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
                         android:backgroundTint="@color/secondaryColor"
                         android:focusable="false"
                         android:src="@drawable/search"
@@ -48,7 +48,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center|right"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:backgroundTint="@color/secondaryColor"
                         android:focusable="false"
                         android:src="@drawable/cart3"
@@ -61,39 +61,90 @@
 
             </Toolbar>
 
-            <ViewFlipper
-                android:id="@+id/vfHome"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:background="@color/primaryColor"
                 android:layout_height="150dp">
 
-            </ViewFlipper>
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true">
+
+                </androidx.viewpager.widget.ViewPager>
+
+                <LinearLayout
+                    android:id="@+id/SliderDots"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                </LinearLayout>
+            </RelativeLayout>
             <LinearLayout
                 android:background="@color/primaryColor"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+
+
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:padding="5dp"
+                    android:layout_marginStart="5dp"
                     android:background="@color/primaryColor"
                     android:fontFamily="sans-serif"
                     android:text="SẢN PHẨM MỚI NHẤT"
-                    android:textAlignment="center"
                     android:textColor="@color/primaryTextColor"
                     android:textSize="20sp"
-                    android:textStyle="bold">
+                    android:textStyle="bold"/>
 
-                </TextView>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvHome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"/>
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="5dp"
+                    android:layout_marginStart="5dp"
+                    android:background="@color/primaryColor"
+                    android:fontFamily="sans-serif"
+                    android:text="SẢN PHẨM BÁN CHẠY"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:scrollbarThumbVertical="@android:color/white"
+                    android:scrollbarAlwaysDrawVerticalTrack="true"
+                    android:fadeScrollbars="false"
+                    android:scrollbarSize="2dp">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvHome2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        />
+                </ScrollView>
+
+
             </LinearLayout>
 
         </LinearLayout>
@@ -112,8 +163,7 @@
                     android:id="@+id/ivbgnav"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_launcher_background" />
+                    android:scaleType="centerCrop" />
                 <ListView
                     android:id="@+id/lvHome"
                     android:layout_below="@id/ivbgnav"

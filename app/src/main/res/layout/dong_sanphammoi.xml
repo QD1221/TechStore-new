@@ -9,42 +9,43 @@
         app:cardCornerRadius="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="5dp">
+        android:layout_margin="6dp">
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#FFFFFF">
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="2dp"
                 android:layout_gravity="top|right"
-                android:src="@drawable/new4"
-                tools:ignore="RtlHardcoded" />
+                android:src="@drawable/new_stamp"
+                />
 
             <LinearLayout
                 android:layout_gravity="center"
                 android:orientation="vertical"
-                android:layout_margin="15dp"
-                android:padding="15dp"
+                android:padding="10dp"
                 android:layout_width="160dp"
-                android:layout_height="wrap_content">
+                android:layout_height="180dp">
 
                 <ImageView
                     android:id="@+id/ivsanpham"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:layout_gravity="center" />
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"/>
 
                 <TextView
                     android:id="@+id/tvtensanpham"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     android:text="Tên sản phẩm"
                     android:layout_marginTop="6dp"
                     android:maxLines="1"
                     android:maxWidth="160dp"
-                    android:textStyle="bold"
-                    android:textColor="#2196F3"
+                    android:textColor="@color/black"
                     android:textAlignment="center"
                     android:layout_gravity="center"
                     android:fontFamily="sans-serif"
@@ -55,12 +56,12 @@
                     android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:text="Giá sản phẩm"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     android:layout_gravity="center"
                     android:fontFamily="sans-serif"
-                    android:textColor="#FF5722"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:textColor="@color/primaryColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
             </LinearLayout>
         </FrameLayout>
     </androidx.cardview.widget.CardView>

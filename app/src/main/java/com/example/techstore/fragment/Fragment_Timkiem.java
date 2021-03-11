@@ -17,6 +17,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -55,7 +56,6 @@ public class Fragment_Timkiem extends Fragment {
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
-        tbsearch.setTitle("Tìm kiếm");
         setHasOptionsMenu(true);
         return view;
     }
@@ -95,10 +95,10 @@ public class Fragment_Timkiem extends Fragment {
                 ArrayList<Sanpham> mangsanpham = (ArrayList<Sanpham>) response.body();
                 if (mangsanpham.size() >0){
                     searchSanphamAdapter = new SearchSanphamAdapter(getActivity(), mangsanpham);
-                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+                    GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.VERTICAL, false);
                     tvsearch.setVisibility(View.VISIBLE);
-                    tvsearch.setText("Có " + String.valueOf(mangsanpham.size()) + " sản phẩm được tìm thấy");
-                    rvsearch.setLayoutManager(linearLayoutManager);
+                    tvsearch.setText("Có " + mangsanpham.size() + " sản phẩm được tìm thấy");
+                    rvsearch.setLayoutManager(gridLayoutManager);
                     rvsearch.setAdapter(searchSanphamAdapter);
                     tvkocodulieu.setVisibility(GONE);
                     rvsearch.setVisibility(View.VISIBLE);

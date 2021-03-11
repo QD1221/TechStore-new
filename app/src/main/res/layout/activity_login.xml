@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/store_background">
+    android:background="@drawable/login_background">
 
 
     <LinearLayout
@@ -154,7 +154,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_toRightOf="@id/tvquenmk"
-            android:text="Đăng ký"
+            android:text="Đăng ký tài khoản"
             android:layout_alignParentEnd="true"
             android:textAlignment="textEnd"
             android:textColor="#FFFFFF" />

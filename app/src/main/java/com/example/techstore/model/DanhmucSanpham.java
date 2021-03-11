@@ -1,11 +1,11 @@
 package com.example.techstore.model;
 
-public class Loaisp {
+public class DanhmucSanpham {
     public int Id;
     public String Tenloaisp;
     public String Hinhanhloaisp;
 
-    public Loaisp(int id, String tenloaisp, String hinhanhloaisp) {
+    public DanhmucSanpham(int id, String tenloaisp, String hinhanhloaisp) {
         Id = id;
         Tenloaisp = tenloaisp;
         Hinhanhloaisp = hinhanhloaisp;

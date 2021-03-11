@@ -28,6 +28,8 @@ android {
     }
 }
 
+apply plugin: 'com.google.gms.google-services'
+
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
@@ -41,6 +43,16 @@ dependencies {
     implementation 'com.android.volley:volley:1.1.1'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.google.maps:google-maps-services:0.1.20'
+
+    implementation platform('com.google.firebase:firebase-bom:26.5.0')
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-database'
+    implementation 'com.google.firebase:firebase-storage'
+
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+    implementation 'com.shobhitpuri.custombuttons:google-signin:1.1.0'
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
 
     implementation 'com.facebook.android:facebook-android-sdk:[5,6)'
     implementation 'com.facebook.android:facebook-login:[8.1)'
