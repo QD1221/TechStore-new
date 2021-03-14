@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_background">
-
-
+    android:background="@drawable/store_background">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/transparentbgdangnhap"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:orientation="vertical"
         android:paddingLeft="50dp"
         android:paddingRight="50dp">
@@ -22,8 +18,7 @@
             android:layout_height="120dp"
             android:layout_gravity="center"
             android:src="@drawable/techstorelogo"
-            android:scaleType="fitXY"
-            android:layout_marginTop="60dp" />
+            android:scaleType="fitXY" />
 
         <EditText
             android:id="@+id/etmaildn"
@@ -108,10 +103,10 @@
             android:id="@+id/bdnfb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:backgroundTint="@color/com_facebook_blue"
-            android:drawableLeft="@drawable/com_facebook_button_icon"
-            android:paddingLeft="10dp"
+            android:drawableStart="@drawable/com_facebook_button_icon"
+            android:padding="10dp"
             android:text="Đăng nhập bằng Facebook"
             android:textAllCaps="false"
             android:maxLines="1"
@@ -121,11 +116,11 @@
             android:id="@+id/bdngg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:backgroundTint="@color/white"
-            android:drawableLeft="@drawable/googleg_standard_color_18"
+            android:drawableStart="@drawable/googleg_standard_color_18"
             android:drawablePadding="10dp"
-            android:paddingLeft="10dp"
+            android:padding="10dp"
             android:paddingRight="10dp"
             android:text="Đăng nhập bằng Google"
             android:textAllCaps="false"
@@ -135,24 +130,23 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp">
+            android:layout_marginTop="15dp"
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/tvquenmk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:padding="5dp"
                 android:text="Quên mật khẩu?"
                 android:textAlignment="textStart"
                 android:textColor="#FFFFFF" />
 
             <TextView
                 android:id="@+id/tvdky"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:padding="5dp"
                 android:layout_toRightOf="@id/tvquenmk"
                 android:text="Đăng ký tài khoản"
                 android:layout_alignParentEnd="true"
@@ -160,4 +154,5 @@
                 android:textColor="#FFFFFF" />
         </RelativeLayout>
     </LinearLayout>
-</RelativeLayout>
+
+</FrameLayout>

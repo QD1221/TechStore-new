@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.techstore.R;
 import com.example.techstore.model.Giohang;
@@ -145,10 +146,6 @@ public class ChitietSanphamActivity extends AppCompatActivity {
                     btCongCt.setVisibility(View.VISIBLE);
                 }
 
-
-
-
-
                 boolean exists = false;
                 for (int i=0; i<MainActivity.manggiohang.size(); i++){
                     if (MainActivity.manggiohang.get(i).getIdsp() == id){
@@ -170,8 +167,7 @@ public class ChitietSanphamActivity extends AppCompatActivity {
                 long Giamoi = soluong * Giachitiet;
                 MainActivity.manggiohang.add(new Giohang(id,Tenchitiet,Giamoi,Hinhanhchitiet,soluong));
             }
-            Intent intent = new Intent(getApplicationContext(), GiohangActivity.class);
-            startActivity(intent);
+            Toast.makeText(this, "Đã thêm sản phẩm vào giỏ hàng", Toast.LENGTH_SHORT).show();
         });
     }
 

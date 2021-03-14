@@ -83,6 +83,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="-64dp"
+        android:layout_marginBottom="80dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
         <FrameLayout
             android:layout_width="match_parent"
@@ -144,7 +145,6 @@
                     android:layout_marginTop="24dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
-                    android:maxWidth="364dp"
                     android:fontFamily="@font/rubik"
                     android:lineSpacingExtra="4dp"
                     android:text="A moisturizing body with a sweet and refreshing aroma of Japanese cherry blossom, peony, musk, and strawberry. Will make the skin feel moist and smooth. The combination also makes long-lasting fragrance.A moisturizing body with a sweet and refreshing aroma of Japanese cherry blossom, peony, musk, and strawberry. Will make the skin feel moist and smooth. The combination also makes long-lasting fragrance."

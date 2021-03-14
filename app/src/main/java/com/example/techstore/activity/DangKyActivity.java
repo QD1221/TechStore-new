@@ -71,8 +71,8 @@ public class DangKyActivity extends AppCompatActivity implements View.OnClickLis
                             if (task.isSuccessful()){
                                 progressDialog.dismiss();
                                 ThanhVienModel thanhVienModel = new ThanhVienModel();
-                                thanhVienModel.setHoten(email);
-                                thanhVienModel.setHinhanh("user.png");
+                                thanhVienModel.setHoten("Thành viên");
+                                thanhVienModel.setHinhanh("https://qdstore.000webhostapp.com/hinhanh/user.png");
                                 String uid = task.getResult().getUser().getUid();
                                 dangKyController = new DangKyController();
                                 dangKyController.ThemThongTinThanhVienController(thanhVienModel, uid);

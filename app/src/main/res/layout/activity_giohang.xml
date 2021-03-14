@@ -66,9 +66,9 @@
                 android:layout_height="wrap_content"
                 android:text="0đ"
                 android:textAlignment="center"
-                android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="@color/primaryDarkColor"/>
+                android:textSize="20sp"
+                android:textColor="@color/secondaryDarkColor"/>
 
         </LinearLayout>
 

@@ -78,7 +78,7 @@ public class ThongtinActivity extends AppCompatActivity implements OnMapReadyCal
         //Set position
         options.position(NEU);
         //Set title
-        options.title("NEU");
+        options.title("My Office");
         mMap.addMarker(options).setIcon(bitmapDescriptorFromVector(getApplicationContext(),R.drawable.ic_sharp_apartment_24));
     }
 

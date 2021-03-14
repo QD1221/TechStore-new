@@ -69,8 +69,6 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
         loginFacebook = LoginManager.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
 
-//        firebaseAuth.signOut();
-
         bdngg = findViewById(R.id.bdngg);
         bdnfb = findViewById(R.id.bdnfb);
         tvdky = findViewById(R.id.tvdky);
@@ -243,13 +241,15 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
             if (uri != null){
                 thanhVienModel.setHinhanh(uri.toString());
             }else {
-                thanhVienModel.setHinhanh("user.png");
+                thanhVienModel.setHinhanh("https://qdstore.000webhostapp.com/hinhanh/user.png");
             }
 
             DangKyController dangKyController = new DangKyController();
             dangKyController.ThemThongTinThanhVienController(thanhVienModel, user.getUid());
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("mauser", user.getUid());
+            editor.putString("tenuser", user.getDisplayName());
+            editor.putString("hinhuser", String.valueOf(user.getPhotoUrl()));
             editor.commit();
 
             Intent iTrangchu = new Intent(DangNhapActivity.this, MainActivity.class);

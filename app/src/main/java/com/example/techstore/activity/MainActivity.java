@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
@@ -18,6 +19,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toolbar;
 import android.widget.ViewFlipper;
 
@@ -45,15 +47,20 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MainActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     Toolbar tbHome;
+    SharedPreferences sharedPreferences;
     RecyclerView recyclerViewHome, recyclerViewHome2;
     NavigationView navigationViewHome;
     ListView listViewHome;
     DrawerLayout drawerLayout;
     FloatingActionButton btGiohang, btSearch;
-    ImageView ivbgnav;
+
+    TextView tvtenuser;
+    CircleImageView civuser;
 
     ViewPager viewPager;
     LinearLayout sliderDotspanel;
@@ -86,8 +93,10 @@ public class MainActivity extends AppCompatActivity {
         btGiohang = findViewById(R.id.btGiohang);
         btSearch = findViewById(R.id.btSearch);
 
-        ivbgnav = findViewById(R.id.ivbgnav);
-        Picasso.get().load("https://channel.mediacdn.vn/thumb_w/640/2019/11/9/photo-1-15732726431201850009940.jpg").into(ivbgnav);
+        tvtenuser = findViewById(R.id.tvtenuser);
+        civuser = findViewById(R.id.civuser);
+
+        sharedPreferences = getSharedPreferences("luudangnhap", MODE_PRIVATE);
 
         mangloaisp = new ArrayList<>();
         mangloaisp.add(0, new DanhmucSanpham(0, "Trang chủ","https://img.icons8.com/ios-glyphs/2x/home.png"));
@@ -352,6 +361,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void GetDulieuLoaisp() {
+        String tenuser = sharedPreferences.getString("tenuser", "");
+        if (!tenuser.equals("")||tenuser.length()!= 0){
+            tvtenuser.setText(tenuser);
+        }else {
+            tvtenuser.setText("Thành viên");
+        }
+
+        String hinhuser = sharedPreferences.getString("hinhuser", "");
+        Picasso.get().load(hinhuser).error(getDrawable(R.drawable.user)).into(civuser);
+
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Server.DuongdanLoaisp, response -> {
             if (response !=null){

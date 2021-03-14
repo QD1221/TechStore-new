@@ -27,7 +27,7 @@
     <string name="dangxuly">Đang xử lý</string>
     <string name="thongbaodnthatbai">Tài khoản không hợp lệ! </string>
     <string name="khoiphucmk">Khôi phục mật khẩu</string>
-    <string name="chuoikhoiphucmk">Vui lòng nhập địa chỉ email vào khung bên dưới để tiến hành khôi phục mật khẩu</string>
+    <string name="chuoikhoiphucmk">Vui lòng nhập email vào khung bên dưới để tiến hành khôi phục mật khẩu</string>
     <string name="gui">Đồng ý</string>
     <string name="kophaithanhvien">Chưa là thành viên?</string>
     <string name="thongbaoemailkohople">Email không hợp lệ!</string>

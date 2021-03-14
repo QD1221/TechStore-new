@@ -3,13 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_background">
+    android:background="@drawable/store_background">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/transparentbgdangnhap"
-        >
+        android:background="@color/transparentbgdangnhap">
 
         <LinearLayout
             android:layout_width="match_parent"
