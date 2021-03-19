@@ -2,8 +2,12 @@ package com.example.techstore.adapter;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +19,12 @@ import android.widget.TextView;
 import androidx.core.content.ContextCompat;
 
 import com.example.techstore.R;
+import com.example.techstore.activity.DangNhapActivity;
 import com.example.techstore.activity.GiohangActivity;
 import com.example.techstore.activity.MainActivity;
 import com.example.techstore.model.Giohang;
 import com.example.techstore.model.Sanpham;
+import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
@@ -78,30 +84,33 @@ public class GiohangAdapter extends BaseAdapter {
             viewHolder.btXoa.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    // Create custom dialog object
+                    final Dialog dialog = new Dialog(context);
+                    // Include dialog.xml file
+                    dialog.setContentView(R.layout.dialog_xoagiohang);
+                    dialog.setCanceledOnTouchOutside(false);
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-                    builder.setTitle("Xác nhận xóa sản phẩm");
-                    builder.setIcon(ContextCompat.getDrawable(context,R.drawable.warning2));
-                    builder.setMessage("Bạn có chắc muốn xóa sản phẩm này?");
-                    builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+                    TextView tvdongy = dialog.findViewById(R.id.tvdongy);
+                    TextView tvkodongy = dialog.findViewById(R.id.tvkodongy);
+                    tvdongy.setOnClickListener(new View.OnClickListener() {
                         @Override
-                        public void onClick(DialogInterface dialog, int which) {
+                        public void onClick(View v) {
                             manggiohang.remove(position);
                             notifyDataSetChanged();
                             ((Activity)context).recreate();
                         }
                     });
 
-                    builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                    tvkodongy.setOnClickListener(new View.OnClickListener() {
                         @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            notifyDataSetChanged();
+                        public void onClick(View v) {
+                            dialog.dismiss();
                         }
                     });
+                    // Set dialog title
 
-                    AlertDialog dialog = builder.create();
                     dialog.show();
-
 
                 }
             });
@@ -181,4 +190,5 @@ public class GiohangAdapter extends BaseAdapter {
         });
         return convertView;
     }
+
 }

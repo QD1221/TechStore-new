@@ -12,7 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toolbar;
 
 import com.android.volley.Request;
@@ -39,8 +41,12 @@ import static com.example.techstore.R.drawable.*;
 public class DienThoaiActivity extends AppCompatActivity {
 
     Toolbar tbDienthoai;
+
+    FrameLayout flcart;
+    TextView tvcart;
+
     ListView lvDienthoai;
-    FloatingActionButton btGiohang;
+
     DienthoaiAdapter dienthoaiAdapter;
     ArrayList<Sanpham> mangDienthoai;
     int idDienthoai = 0;
@@ -55,7 +61,11 @@ public class DienThoaiActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dien_thoai);
         tbDienthoai = findViewById(R.id.tbDienthoai);
         lvDienthoai = findViewById(R.id.lvDienthoai);
-        btGiohang = findViewById(R.id.btGiohang);
+
+        flcart = findViewById(R.id.flcart);
+        tvcart = findViewById(R.id.tvcart);
+
+
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         footerview = inflater.inflate(R.layout.progressbar,null);
         if (CheckConnection.haveNetworkConnection(getApplicationContext())){
@@ -71,6 +81,13 @@ public class DienThoaiActivity extends AppCompatActivity {
         dienthoaiAdapter = new DienthoaiAdapter(getApplicationContext(),mangDienthoai);
         lvDienthoai.setAdapter(dienthoaiAdapter);
         mHandler = new mHandler();
+
+        if (MainActivity.manggiohang !=null){
+
+        }else {
+            MainActivity.manggiohang = new ArrayList<>();
+        }
+
         Giohang();
 
 
@@ -79,7 +96,12 @@ public class DienThoaiActivity extends AppCompatActivity {
 
 
     public void Giohang(){
-        btGiohang.setOnClickListener(v -> {
+        if (MainActivity.manggiohang.size() != 0){
+            tvcart.setText(String.valueOf(MainActivity.manggiohang.size()));
+        }else {
+            tvcart.setText("0");
+        }
+        flcart.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), GiohangActivity.class);
             startActivity(intent);
         });
@@ -201,6 +223,12 @@ public class DienThoaiActivity extends AppCompatActivity {
             mHandler.sendMessage(message);
             super.run();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Giohang();
     }
 }
 

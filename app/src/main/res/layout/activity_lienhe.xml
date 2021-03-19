@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primaryColor"
+    android:background="@color/daynight_bgColor"
     tools:context="activity.LienheActivity">
     <Toolbar
         android:id="@+id/tbLienhe"
@@ -23,7 +23,7 @@
         android:layout_marginTop="?attr/actionBarSize">
         <LinearLayout
             android:orientation="horizontal"
-            android:background="@color/primaryColor"
+            android:background="@color/daynight_bgColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp">
@@ -35,7 +35,7 @@
                 android:layout_height="55dp"/>
             <TextView android:id="@+id/tvgit"
                 android:text="@string/git"
-                android:textColor="#131313"
+                android:textColor="@color/daynight_textColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15dp"
@@ -43,7 +43,7 @@
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
-            android:background="@color/primaryColor"
+            android:background="@color/daynight_bgColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp">
@@ -55,7 +55,7 @@
                 android:layout_height="55dp"/>
             <TextView android:id="@+id/tvfb"
                 android:text="@string/fb"
-                android:textColor="#131313"
+                android:textColor="@color/daynight_textColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15dp"
@@ -63,7 +63,7 @@
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
-            android:background="@color/primaryColor"
+            android:background="@color/daynight_bgColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp">
@@ -75,7 +75,7 @@
                 android:layout_height="55dp"/>
             <TextView android:id="@+id/tvmail"
                 android:text="@string/mail"
-                android:textColor="#131313"
+                android:textColor="@color/daynight_textColor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxLines="1"

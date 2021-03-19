@@ -1,6 +1,7 @@
 package com.example.techstore.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -9,13 +10,22 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -28,10 +38,12 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.techstore.R;
 import com.example.techstore.adapter.DanhmucAdapter;
+import com.example.techstore.adapter.GiohangAdapter;
 import com.example.techstore.adapter.HomeSliderAdapter;
 import com.example.techstore.adapter.SanphambanchayAdapter;
 import com.example.techstore.adapter.SanphammoiAdapter;
 import com.example.techstore.model.DanhmucSanpham;
+import com.example.techstore.model.Giohang;
 import com.example.techstore.model.Sanpham;
 import com.example.techstore.ultil.CheckConnection;
 import com.example.techstore.ultil.Server;
@@ -50,6 +62,11 @@ import java.util.TimerTask;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static final String NIGHT_MODE = "NIGHT_MODE";
+    private static final String PREF = "AppSettingsPrefs";
+    private static final String FIRST_START = "FirstStart";
+
     FirebaseAuth firebaseAuth;
     Toolbar tbHome;
     SharedPreferences sharedPreferences;
@@ -57,10 +74,15 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationViewHome;
     ListView listViewHome;
     DrawerLayout drawerLayout;
-    FloatingActionButton btGiohang, btSearch;
+
+    ImageView ivsearch;
+    FrameLayout flcart;
+    TextView tvcart;
 
     TextView tvtenuser;
     CircleImageView civuser;
+
+    ImageView ivout;
 
     ViewPager viewPager;
     LinearLayout sliderDotspanel;
@@ -79,22 +101,49 @@ public class MainActivity extends AppCompatActivity {
     SanphammoiAdapter sanphammoiAdapter;
     SanphambanchayAdapter sanphambanchayAdapter;
 
-    public static ArrayList<com.example.techstore.model.Giohang> manggiohang;
+    public static ArrayList<Giohang> manggiohang;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        final SharedPreferences appSettingsPrefs = MainActivity.this.getSharedPreferences(PREF,0);
+        final boolean isNightModeOn = appSettingsPrefs.getBoolean(NIGHT_MODE, true);
+        boolean isFirstStart = appSettingsPrefs.getBoolean(FIRST_START, true);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && isFirstStart ){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+        } else {
+            if (isNightModeOn) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            }
+        }
+
         tbHome = findViewById(R.id.tbHome);
         recyclerViewHome = findViewById(R.id.rvHome);
         recyclerViewHome2 = findViewById(R.id.rvHome2);
         navigationViewHome = findViewById(R.id.nvHome);
         listViewHome = findViewById(R.id.lvHome);
         drawerLayout = findViewById(R.id.dlHome);
-        btGiohang = findViewById(R.id.btGiohang);
-        btSearch = findViewById(R.id.btSearch);
+
+        ivsearch = findViewById(R.id.ivsearch);
+        flcart = findViewById(R.id.flcart);
+        tvcart = findViewById(R.id.tvcart);
+
 
         tvtenuser = findViewById(R.id.tvtenuser);
         civuser = findViewById(R.id.civuser);
+
+        ivout = findViewById(R.id.ivout);
+        ivout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCustomDialog();
+
+            }
+        });
 
         sharedPreferences = getSharedPreferences("luudangnhap", MODE_PRIVATE);
 
@@ -117,14 +166,16 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewHome2.setLayoutManager(gridLayoutManager);
         recyclerViewHome2.setAdapter(sanphambanchayAdapter);
 
-        tbHome.setTitle("Trang chủ");
-        Search();
-        Giohang();
         if (manggiohang !=null){
 
         }else {
             manggiohang = new ArrayList<>();
         }
+
+        tbHome.setTitle("Trang chủ");
+        Search();
+        Giohang();
+
         if (CheckConnection.haveNetworkConnection(getApplicationContext())) {
             ActionBar();
             GetDulieuLoaisp();
@@ -210,14 +261,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void Search() {
-        btSearch.setOnClickListener(v -> {
+        ivsearch.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), SearchSanPhamActivity.class);
             startActivity(intent);
         });
     }
 
     public void Giohang(){
-        btGiohang.setOnClickListener(v -> {
+        if (manggiohang.size() != 0){
+            tvcart.setText(String.valueOf(manggiohang.size()));
+        }else {
+            tvcart.setText("0");
+        }
+        flcart.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), GiohangActivity.class);
             startActivity(intent);
         });
@@ -285,9 +341,7 @@ public class MainActivity extends AppCompatActivity {
 
                 case 5:
                     if (CheckConnection.haveNetworkConnection(getApplicationContext())){
-                        firebaseAuth = FirebaseAuth.getInstance();
-                        firebaseAuth.signOut();
-                        Intent intent = new Intent(MainActivity.this, DangNhapActivity.class);
+                        Intent intent = new Intent(MainActivity.this, CaiDatActivity.class);
                         startActivity(intent);
                     }
                     else {
@@ -388,7 +442,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 mangloaisp.add(3, new DanhmucSanpham(0, "Liên hệ","https://img.icons8.com/ios-filled/2x/new-contact.png"));
                 mangloaisp.add(4, new DanhmucSanpham(0, "Thông tin","https://img.icons8.com/material/2x/about.png"));
-                mangloaisp.add(5, new DanhmucSanpham(0, "Đăng xuất", "https://img.icons8.com/metro/2x/exit.png"));
+                mangloaisp.add(5, new DanhmucSanpham(0, "Giao diện", "https://img.icons8.com/fluent-systems-filled/2x/crescent-moon.png"));
             }
         }, error -> CheckConnection.ShowToast_Short(getApplicationContext(),error.toString()));
         requestQueue.add(jsonArrayRequest);
@@ -399,4 +453,42 @@ public class MainActivity extends AppCompatActivity {
         tbHome.setNavigationOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
     }
 
+    private void showCustomDialog() {
+
+        // Create custom dialog object
+        final Dialog dialog = new Dialog(MainActivity.this);
+        // Include dialog.xml file
+        dialog.setContentView(R.layout.dialog_dangxuat);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        TextView tvdongy = dialog.findViewById(R.id.tvdongy);
+        TextView tvkodongy = dialog.findViewById(R.id.tvkodongy);
+        tvdongy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firebaseAuth = FirebaseAuth.getInstance();
+                firebaseAuth.signOut();
+                Intent intent = new Intent(MainActivity.this, DangNhapActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        tvkodongy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        // Set dialog title
+
+        dialog.show();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Giohang();
+    }
 }

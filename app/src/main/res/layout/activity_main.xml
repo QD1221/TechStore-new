@@ -22,39 +22,53 @@
                 android:titleTextColor="@color/primaryTextColor">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="?attr/actionBarSize"
-                    android:layout_marginEnd="10dp"
-                    android:layout_gravity="end">
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp"
+                    android:layout_gravity="end"
+                    android:orientation="horizontal">
 
-                    <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/btSearch"
+
+                        <ImageView
+                            android:id="@+id/ivsearch"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginEnd="15dp"
+                            android:src="@drawable/ic_baseline_search_24"
+                            android:layout_gravity="center|left"/>
+
+
+                    <FrameLayout
+                        android:id="@+id/flcart"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center|right"
-                        android:layout_marginStart="20dp"
-                        android:backgroundTint="@color/secondaryColor"
-                        android:focusable="false"
-                        android:src="@drawable/search"
-                        app:backgroundTint="#FCFDFC"
-                        app:borderWidth="1dp"
-                        app:fabSize="mini"
-                        app:maxImageSize="30dp" />
+                        android:layout_gravity="center|end"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginRight="8dp"
+                            android:src="@drawable/ic_supermarket"/>
 
 
-                    <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/btGiohang"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center|right"
-                        android:layout_marginStart="10dp"
-                        android:backgroundTint="@color/secondaryColor"
-                        android:focusable="false"
-                        android:src="@drawable/cart3"
-                        app:backgroundTint="#FCFDFC"
-                        app:borderWidth="1dp"
-                        app:fabSize="mini"
-                        app:maxImageSize="30dp" />
+                        <TextView
+                            android:id="@+id/tvcart"
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:textColor="@color/black"
+                            android:layout_gravity="end|center"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="center"
+                            android:textSize="8sp"
+                            android:background="@drawable/white_circle"
+                            android:backgroundTint="@color/secondaryColor"/>
+
+
+                    </FrameLayout>
                 </LinearLayout>
 
 
@@ -62,7 +76,8 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp">
+                android:layout_height="150dp"
+                android:background="@color/daynight_bgColor">
 
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/viewPager"
@@ -84,7 +99,7 @@
                 </LinearLayout>
             </RelativeLayout>
             <LinearLayout
-                android:background="@color/primaryColor"
+                android:background="@color/daynight_bgColor"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -94,11 +109,11 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:padding="5dp"
-                    android:layout_marginStart="5dp"
-                    android:background="@color/primaryColor"
+                    android:paddingStart="5dp"
+                    android:background="@color/daynight_bgColor"
                     android:fontFamily="sans-serif"
                     android:text="SẢN PHẨM MỚI NHẤT"
-                    android:textColor="@color/primaryTextColor"
+                    android:textColor="@color/daynight_textColor"
                     android:textSize="20sp"
                     android:textStyle="bold"/>
 
@@ -107,7 +122,7 @@
                     android:id="@+id/rvHome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/primaryColor"
+                    android:background="@color/daynight_bgColor"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"/>
 
@@ -116,20 +131,21 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:padding="5dp"
-                    android:layout_marginStart="5dp"
-                    android:background="@color/primaryColor"
+                    android:paddingStart="5dp"
+                    android:background="@color/daynight_bgColor"
                     android:fontFamily="sans-serif"
                     android:text="SẢN PHẨM BÁN CHẠY"
-                    android:textColor="@color/primaryTextColor"
+                    android:textColor="@color/daynight_textColor"
                     android:textSize="20sp"
                     android:textStyle="bold"/>
 
                 <ScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginBottom="5dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="5dp"
+                    android:background="@color/daynight_bgColor"
                     android:scrollbarThumbVertical="@android:color/white"
                     android:scrollbarAlwaysDrawVerticalTrack="true"
                     android:fadeScrollbars="false"
@@ -148,7 +164,8 @@
             android:id="@+id/nvHome"
             android:layout_gravity="start"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/daynight_bgColor">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -158,13 +175,13 @@
                     android:id="@+id/llmain"
                     android:layout_width="match_parent"
                     android:layout_height="160dp"
-                    android:background="@color/primaryColor"
+                    android:background="@color/daynight_bgColor"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/transparentbgdangnhap"
+                        android:background="@color/primaryColor"
                         android:orientation="horizontal">
 
                         <de.hdodenhof.circleimageview.CircleImageView
@@ -183,8 +200,16 @@
                             android:layout_gravity="center"
                             android:layout_weight="3"
                             android:text="Ngon quá"
-                            android:textColor="@color/primaryTextColor"
+                            android:textColor="@color/daynight_textColor"
                             android:textSize="20sp" />
+
+                        <ImageView
+                            android:id="@+id/ivout"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginRight="20dp"
+                            android:src="@drawable/ic_baseline_logout_24"
+                            android:layout_gravity="center"/>
                     </LinearLayout>
 
                 </LinearLayout>
@@ -196,11 +221,11 @@
                     android:layout_marginStart="25dp"
                     android:layout_marginEnd="25dp"
                     android:layout_height="2dp"
-                    android:background="@color/white"/>
+                    android:background="@color/daynight_bgColor"/>
 
                 <ListView
                     android:id="@+id/lvHome"
-                    android:background="@color/primaryLightColor"
+                    android:background="@color/daynight_bgColor"
                     android:layout_below="@id/vHome"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">

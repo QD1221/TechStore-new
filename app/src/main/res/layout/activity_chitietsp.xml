@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="@color/primaryColor">
+    android:background="@color/daynight_bgColor">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
@@ -17,7 +17,7 @@
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/primaryColor"
+            android:background="@color/daynight_bgColor"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:contentScrim="?attr/colorPrimary"
             app:collapsedTitleGravity="center_horizontal"
@@ -51,26 +51,38 @@
                 app:contentInsetRight="0dp"
                 app:contentInsetStart="0dp">
 
-                <LinearLayout
+                <FrameLayout
+                    android:id="@+id/flcart"
                     android:layout_width="wrap_content"
-                    android:layout_height="?attr/actionBarSize"
-                    android:layout_marginEnd="10dp"
-                    android:layout_gravity="end">
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|end"
+                    android:paddingEnd="15dp"
+                    android:orientation="vertical">
 
-                    <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/btGiohang"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center|right"
-                        android:layout_marginLeft="10dp"
-                        android:backgroundTint="@color/secondaryColor"
-                        android:focusable="false"
-                        android:src="@drawable/cart3"
-                        app:backgroundTint="#FCFDFC"
-                        app:borderWidth="1dp"
-                        app:fabSize="mini"
-                        app:maxImageSize="30dp" />
-                </LinearLayout>
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginRight="8dp"
+                        android:src="@drawable/ic_supermarket_black"/>
+
+
+                    <TextView
+                        android:id="@+id/tvcart"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="end|center"
+                        android:layout_marginBottom="9dp"
+                        android:gravity="center"
+                        android:textSize="8sp"
+                        android:background="@drawable/white_circle"
+                        android:backgroundTint="@color/secondaryColor"/>
+
+
+                </FrameLayout>
+
 
             </androidx.appcompat.widget.Toolbar>
 
@@ -148,7 +160,7 @@
                     android:fontFamily="@font/rubik"
                     android:lineSpacingExtra="4dp"
                     android:text="A moisturizing body with a sweet and refreshing aroma of Japanese cherry blossom, peony, musk, and strawberry. Will make the skin feel moist and smooth. The combination also makes long-lasting fragrance.A moisturizing body with a sweet and refreshing aroma of Japanese cherry blossom, peony, musk, and strawberry. Will make the skin feel moist and smooth. The combination also makes long-lasting fragrance."
-                    android:textColor="@color/primaryTextColor" />
+                    android:textColor="@color/daynight_textColor" />
 
             </LinearLayout>
         </FrameLayout>
@@ -203,6 +215,7 @@
             android:padding="16dp"
             android:paddingRight="16dp"
             android:text="Thêm giỏ hàng"
+            android:maxLines="1"
             android:textSize="18sp"
             android:textAllCaps="false"
             android:textColor="#FFFFFF" />

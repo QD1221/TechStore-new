@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primaryColor"
+    android:background="@color/daynight_bgColor"
     tools:context=".activity.DienThoaiActivity">
     <Toolbar
         android:id="@+id/tbDienthoai"
@@ -15,26 +15,38 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
 
-        <LinearLayout
+        <FrameLayout
+            android:id="@+id/flcart"
             android:layout_width="wrap_content"
-            android:layout_height="?attr/actionBarSize"
-            android:layout_marginEnd="10dp"
-            android:layout_gravity="end">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|end"
+            android:paddingEnd="15dp"
+            android:orientation="vertical">
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/btGiohang"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|right"
-                android:layout_marginLeft="10dp"
-                android:backgroundTint="#4CAF50"
-                android:focusable="false"
-                android:src="@drawable/cart3"
-                app:backgroundTint="#FCFDFC"
-                app:borderWidth="1dp"
-                app:fabSize="mini"
-                app:maxImageSize="30dp" />
-        </LinearLayout>
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="7dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/ic_supermarket"/>
+
+
+            <TextView
+                android:id="@+id/tvcart"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:textColor="@color/black"
+                android:layout_gravity="end|center"
+                android:layout_marginBottom="9dp"
+                android:gravity="center"
+                android:textSize="8sp"
+                android:background="@drawable/white_circle"
+                android:backgroundTint="@color/secondaryColor"/>
+
+
+        </FrameLayout>
+
 
 
     </Toolbar>
@@ -42,8 +54,9 @@
         android:id="@+id/lvDienthoai"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp">
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:background="@color/daynight_bgColor">
 
     </ListView>
 

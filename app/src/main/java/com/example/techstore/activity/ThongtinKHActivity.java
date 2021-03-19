@@ -1,14 +1,18 @@
 package com.example.techstore.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -53,86 +57,135 @@ public class ThongtinKHActivity extends AppCompatActivity {
         }
     }
 
+
+
     private void EventButton() {
-        btXacnhan.setOnClickListener(this::onClick);
+        btXacnhan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(ThongtinKHActivity.this);
+
+                builder.setTitle("Xác nhận gửi thông tin");
+                builder.setIcon(ContextCompat.getDrawable(ThongtinKHActivity.this, R.drawable.warning2));
+                builder.setMessage("Bạn đã chắc chắn điền đúng thông tin chưa? Nếu đúng, vui lòng ấn Tiếp tục");
+                builder.setPositiveButton("Tiếp tục", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        final String ten = etTenKH.getText().toString().trim();
+                        final String sdt = etSDT.getText().toString().trim();
+                        final String email = etEmail.getText().toString().trim();
+                        if (ten.length() > 0 && sdt.length() > 0 && email.length() > 0) {
+                            RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+
+                            StringRequest stringRequest = new StringRequest(Request.Method.POST, Server.Duongdandonhang, new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(final String madonhang) {
+                                    if (madonhang != null || parseInt(madonhang) > 0) {
+                                        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+                                        StringRequest request = new StringRequest(Request.Method.POST, Server.Duongdanchitietdonhang, new Response.Listener<String>() {
+                                            @Override
+                                            public void onResponse(String response) {
+                                                if (response != null) {
+                                                    MainActivity.manggiohang.clear();
+                                                    showCustomDialog();
+                                                } else {
+                                                    CheckConnection.ShowToast_Short(getApplicationContext(), "Dữ liệu giỏ hàng bị lỗi");
+                                                }
+                                            }
+                                        }, new Response.ErrorListener() {
+                                            @Override
+                                            public void onErrorResponse(VolleyError error) {
+
+                                            }
+
+                                        }) {
+                                            @Override
+                                            protected Map<String, String> getParams() throws AuthFailureError {
+                                                JSONArray jsonArray = new JSONArray();
+                                                for (int i = 0; i < MainActivity.manggiohang.size(); i++) {
+                                                    JSONObject jsonObject = new JSONObject();
+                                                    try {
+                                                        jsonObject.put("madonhang", madonhang);
+                                                        jsonObject.put("masanpham", MainActivity.manggiohang.get(i).getIdsp());
+                                                        jsonObject.put("tensanpham", MainActivity.manggiohang.get(i).getTensp());
+                                                        jsonObject.put("giasanpham", MainActivity.manggiohang.get(i).getGiasp());
+                                                        jsonObject.put("soluongsanpham", MainActivity.manggiohang.get(i).getSoluongsp());
+                                                    } catch (JSONException e) {
+                                                        e.printStackTrace();
+                                                    }
+                                                    jsonArray.put(jsonObject);
+                                                }
+                                                HashMap<String, String> hashMap = new HashMap<String, String>();
+                                                hashMap.put("json", jsonArray.toString());
+                                                return hashMap;
+                                            }
+                                        };
+                                        queue.add(request);
+                                    }
+                                }
+                            }, new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+
+                                }
+
+                            }) {
+                                @Override
+                                protected Map<String, String> getParams() throws AuthFailureError {
+                                    HashMap<String, String> hashMap = new HashMap<String, String>();
+                                    hashMap.put("tenkhachhang", ten);
+                                    hashMap.put("sodienthoai", sdt);
+                                    hashMap.put("email", email);
+                                    return hashMap;
+                                }
+                            };
+                            requestQueue.add(stringRequest);
+                        } else {
+                            CheckConnection.ShowToast_Short(getApplicationContext(), "Vui lòng kiểm tra lại thông tin");
+                        }
+                    }
+                });
+
+                builder.setNegativeButton("Quay lại", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
     }
 
-    private void onClick(View v) {
-        final String ten = etTenKH.getText().toString().trim();
-        final String sdt = etSDT.getText().toString().trim();
-        final String email = etEmail.getText().toString().trim();
-        if (ten.length() > 0 && sdt.length() > 0 && email.length() > 0) {
-            RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+    private void showCustomDialog() {
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, Server.Duongdandonhang, new Response.Listener<String>() {
-                @Override
-                public void onResponse(final String madonhang) {
-                    Log.d("Ma don hang", madonhang);
-                    if (madonhang != null || parseInt(madonhang) > 0) {
-                        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                        StringRequest request = new StringRequest(Request.Method.POST, Server.Duongdanchitietdonhang, new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                if (response != null) {
-                                    MainActivity.manggiohang.clear();
-                                    CheckConnection.ShowToast_Short(getApplicationContext(), "Đã thêm dữ liệu giỏ hàng thành công");
-                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                    startActivity(intent);
-                                    CheckConnection.ShowToast_Short(getApplicationContext(), "Mời tiếp tục mua hàng");
-                                } else {
-                                    CheckConnection.ShowToast_Short(getApplicationContext(), "Dữ liệu giỏ hàng bị lỗi");
-                                }
-                            }
-                        }, new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
+        // Create custom dialog object
+        final Dialog dialog = new Dialog(ThongtinKHActivity.this);
+        // Include dialog.xml file
+        dialog.setContentView(R.layout.dialog_xacnhanthongtin);
+        dialog.setCanceledOnTouchOutside(false);
 
-                            }
+        TextView tvdialog = dialog.findViewById(R.id.tvdialog);
+        tvdialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ThongtinKHActivity.this, MainActivity.class));
+                finish();
+            }
+        });
 
-                        }) {
-                            @Override
-                            protected Map<String, String> getParams() throws AuthFailureError {
-                                JSONArray jsonArray = new JSONArray();
-                                for (int i = 0; i < MainActivity.manggiohang.size(); i++) {
-                                    JSONObject jsonObject = new JSONObject();
-                                    try {
-                                        jsonObject.put("madonhang", madonhang);
-                                        jsonObject.put("masanpham", MainActivity.manggiohang.get(i).getIdsp());
-                                        jsonObject.put("tensanpham", MainActivity.manggiohang.get(i).getTensp());
-                                        jsonObject.put("giasanpham", MainActivity.manggiohang.get(i).getGiasp());
-                                        jsonObject.put("soluongsanpham", MainActivity.manggiohang.get(i).getSoluongsp());
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
-                                    }
-                                    jsonArray.put(jsonObject);
-                                }
-                                HashMap<String, String> hashMap = new HashMap<String, String>();
-                                hashMap.put("json", jsonArray.toString());
-                                return hashMap;
-                            }
-                        };
-                        queue.add(request);
-                    }
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
+        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                startActivity(new Intent(ThongtinKHActivity.this, MainActivity.class));
+                finish();
+            }
+        });
+        // Set dialog title
 
-                }
+        dialog.show();
 
-            }) {
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    HashMap<String, String> hashMap = new HashMap<String, String>();
-                    hashMap.put("tenkhachhang", ten);
-                    hashMap.put("sodienthoai", sdt);
-                    hashMap.put("email", email);
-                    return hashMap;
-                }
-            };
-            requestQueue.add(stringRequest);
-        } else {
-            CheckConnection.ShowToast_Short(getApplicationContext(), "Hãy kiểm tra lại dữ liệu");
-        }
     }
 }

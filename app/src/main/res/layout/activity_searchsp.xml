@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/primaryColor"
+    android:background="@color/daynight_bgColor"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"

@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/daynight_bgColor">
     <Toolbar
         android:id="@+id/tbThongtin"
         android:title="Thông tin"
@@ -14,7 +15,6 @@
 
     </Toolbar>
     <LinearLayout
-        android:background="#FFFFFF"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

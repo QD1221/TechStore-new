@@ -67,6 +67,7 @@
         </activity>
         <activity android:name=".activity.DangKyActivity"/>
         <activity android:name=".activity.KhoiPhucMatKhauActivity"/>
+        <activity android:name=".activity.CaiDatActivity"/>
     </application>
 
 </manifest>

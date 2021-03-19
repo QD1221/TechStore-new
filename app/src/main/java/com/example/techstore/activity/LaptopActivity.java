@@ -10,7 +10,9 @@ import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AbsListView;
+import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toolbar;
 
 import com.android.volley.Request;
@@ -35,8 +37,11 @@ import java.util.Map;
 public class LaptopActivity extends AppCompatActivity {
 
     Toolbar tbLaptop;
+
+    FrameLayout flcart;
+    TextView tvcart;
+
     ListView lvLaptop;
-    FloatingActionButton btGiohang;
     LaptopAdapter laptopAdapter;
     ArrayList<Sanpham> mangLaptop;
     int idLaptop = 0;
@@ -50,8 +55,11 @@ public class LaptopActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_laptop);
         tbLaptop = findViewById(R.id.tbLaptop);
+
+        flcart = findViewById(R.id.flcart);
+        tvcart = findViewById(R.id.tvcart);
+
         lvLaptop = findViewById(R.id.lvLaptop);
-        btGiohang = findViewById(R.id.btGiohang);
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         footerview = inflater.inflate(R.layout.progressbar,null);
         if (CheckConnection.haveNetworkConnection(getApplicationContext())){
@@ -67,13 +75,23 @@ public class LaptopActivity extends AppCompatActivity {
         laptopAdapter = new LaptopAdapter(getApplicationContext(),mangLaptop);
         lvLaptop.setAdapter(laptopAdapter);
         mHandler = new mHandler();
-        Giohang();
 
+        if (MainActivity.manggiohang !=null){
+
+        }else {
+            MainActivity.manggiohang = new ArrayList<>();
+        }
+        Giohang();
 
     }
 
     public void Giohang(){
-        btGiohang.setOnClickListener(v -> {
+        if (MainActivity.manggiohang.size() != 0){
+            tvcart.setText(String.valueOf(MainActivity.manggiohang.size()));
+        }else {
+            tvcart.setText("0");
+        }
+        flcart.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), GiohangActivity.class);
             startActivity(intent);
         });
@@ -188,5 +206,11 @@ public class LaptopActivity extends AppCompatActivity {
             mHandler.sendMessage(message);
             super.run();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Giohang();
     }
 }

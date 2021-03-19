@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:gravity="center"
+    android:elevation="24dp"
     android:orientation="vertical"
     android:padding="10dp">
 
@@ -71,7 +72,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/btnPositive"
+            android:id="@+id/tvdongy"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -100,7 +101,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/btnNegative"
+            android:id="@+id/tvkodongy"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

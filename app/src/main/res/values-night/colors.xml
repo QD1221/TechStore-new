@@ -21,11 +21,11 @@
     <color name="primaryTextColor">#fce4ec</color>
     <color name="secondaryTextColor">#ffebee</color>
 
-    <color name="daynight_textColor">#E6000000</color>
+    <color name="daynight_textColor">#fafafa</color>
 
-    <color name="daynight_bgColor">#f6f6f6</color>
+    <color name="daynight_bgColor">#303030</color>
 
-    <color name="daynight_blur">@android:color/transparent</color>
+    <color name="daynight_blur">#33000000</color>
 
     <color name="color_dialog_gray">#ededf3</color>
     <color name="color_dialog_content">#ed7861</color>

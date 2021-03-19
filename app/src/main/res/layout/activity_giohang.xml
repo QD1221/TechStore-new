@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/primaryColor"
+    android:background="@color/daynight_bgColor"
     tools:context=".activity.GiohangActivity">
 
     <Toolbar
@@ -28,13 +28,14 @@
                 android:fontFamily="sans-serif"
                 android:textSize="20sp"
                 android:text="Giỏ hàng của bạn đang trống"
-                android:textColor="@color/primaryTextColor"
+                android:textColor="@color/daynight_textColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <ListView
                 android:id="@+id/lvGiohang"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:background="@color/daynight_bgColor"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 

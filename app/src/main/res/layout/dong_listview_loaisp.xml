@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    android:background="@color/primaryColor"
+    android:background="@color/daynight_bgColor"
     android:gravity="center">
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,7 +43,7 @@
                 android:layout_gravity="center|left"
                 android:fontFamily="sans-serif"
                 android:text="Loại sản phẩm"
-                android:textColor="@color/primaryTextColor"
+                android:textColor="@color/daynight_textColor"
                 android:textSize="20sp" />
         </LinearLayout>
 

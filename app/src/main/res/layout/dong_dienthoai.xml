@@ -1,63 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/primaryColor">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
     <androidx.cardview.widget.CardView
         app:cardCornerRadius="15dp"
-        app:cardBackgroundColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        app:cardElevation="4dp"
+        app:cardElevation="5dp"
+        app:cardBackgroundColor="@color/white"
         app:cardUseCompatPadding="true">
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center">
-            <ImageView
-                android:id="@+id/ivDienthoai"
-                android:layout_margin="10dp"
-                android:adjustViewBounds="true"
-                android:layout_width="80dp"
-                android:layout_height="80dp"/>
+
             <LinearLayout
-                android:orientation="vertical"
-                android:layout_margin="5dp"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/tvDienthoai"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@color/black"
-                    android:text="Tên sản phẩm"
-                    android:textSize="15sp"
-                    android:maxLines="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/tvGiadienthoai"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@color/secondaryDarkColor"
-                    android:text="Giá sản phẩm"
-                    android:textSize="18sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/tvMotadienthoai"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:textColor="@color/dark_gray"
-                    android:text="Mô tả điện thoại"
-                    android:textSize="12sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                android:layout_height="match_parent"
+                android:gravity="center">
+                <ImageView
+                    android:id="@+id/ivDienthoai"
+                    android:layout_margin="10dp"
+                    android:adjustViewBounds="true"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"/>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_margin="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/tvDienthoai"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/black"
+                        android:text="Tên sản phẩm"
+                        android:textSize="15sp"
+                        android:maxLines="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/tvGiadienthoai"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/secondaryDarkColor"
+                        android:text="Giá sản phẩm"
+                        android:textSize="18sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/tvMotadienthoai"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:textColor="@color/dark_gray"
+                        android:text="Mô tả điện thoại"
+                        android:textSize="12sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+
             </LinearLayout>
 
-
-        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 

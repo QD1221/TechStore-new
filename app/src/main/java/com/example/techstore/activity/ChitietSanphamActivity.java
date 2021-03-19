@@ -3,10 +3,15 @@ package com.example.techstore.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -20,6 +25,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 public class ChitietSanphamActivity extends AppCompatActivity {
 
@@ -31,7 +37,8 @@ public class ChitietSanphamActivity extends AppCompatActivity {
     Button btdatmua;
     Button btTruCt, btCongCt;
 
-    FloatingActionButton btGiohang;
+    FrameLayout flcart;
+    TextView tvcart;
 
     int id;
     String Tenchitiet;
@@ -70,11 +77,19 @@ public class ChitietSanphamActivity extends AppCompatActivity {
         tvGia = findViewById(R.id.tvgiachitietsp);
         tvMota = findViewById(R.id.tvmotachitietsp);
         btdatmua = findViewById(R.id.btdatmua);
-        btGiohang = findViewById(R.id.btGiohang);
+
+        flcart = findViewById(R.id.flcart);
+        tvcart = findViewById(R.id.tvcart);
+
         btTruCt = findViewById(R.id.btTruCt);
         btGiatriCt = findViewById(R.id.btGiatriCt);
         btCongCt = findViewById(R.id.btCongCt);
 
+        if (MainActivity.manggiohang !=null){
+
+        }else {
+            MainActivity.manggiohang = new ArrayList<>();
+        }
 
         GetInformation();
 //        CatchEventSpinner();
@@ -125,7 +140,12 @@ public class ChitietSanphamActivity extends AppCompatActivity {
 
 
     public void Giohang(){
-        btGiohang.setOnClickListener(v -> {
+        if (MainActivity.manggiohang.size() != 0){
+            tvcart.setText(String.valueOf(MainActivity.manggiohang.size()));
+        }else {
+            tvcart.setText("0");
+        }
+        flcart.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), GiohangActivity.class);
             startActivity(intent);
         });
@@ -167,7 +187,7 @@ public class ChitietSanphamActivity extends AppCompatActivity {
                 long Giamoi = soluong * Giachitiet;
                 MainActivity.manggiohang.add(new Giohang(id,Tenchitiet,Giamoi,Hinhanhchitiet,soluong));
             }
-            Toast.makeText(this, "Đã thêm sản phẩm vào giỏ hàng", Toast.LENGTH_SHORT).show();
+            showCustomDialog();
         });
     }
 
@@ -197,5 +217,35 @@ public class ChitietSanphamActivity extends AppCompatActivity {
                 .into(ivChitiet);
     }
 
+    private void showCustomDialog() {
+
+        // Create custom dialog object
+        final Dialog dialog = new Dialog(ChitietSanphamActivity.this);
+        // Include dialog.xml file
+        dialog.setContentView(R.layout.dialog_giohang);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        TextView tvdialog = dialog.findViewById(R.id.tvdialog);
+        tvdialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recreate();
+                dialog.dismiss();
+            }
+        });
+
+        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                recreate();
+                dialog.dismiss();
+            }
+        });
+        // Set dialog title
+
+        dialog.show();
+
+    }
 
 }
