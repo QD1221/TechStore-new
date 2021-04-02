@@ -72,18 +72,17 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tvdongy"
+            android:id="@+id/tvkodongy"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/sel_def_gray_left"
+            android:background="@drawable/sel_def_gray_right"
             android:clickable="true"
-            android:text="Đồng ý"
+            android:text="Không"
             android:gravity="center"
             android:minHeight="40dp"
             android:textColor="#676767"
             android:focusable="true" />
-
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -101,13 +100,13 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tvkodongy"
+            android:id="@+id/tvdongy"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/sel_def_gray_right"
+            android:background="@drawable/sel_def_gray_left"
             android:clickable="true"
-            android:text="Không"
+            android:text="Đồng ý"
             android:gravity="center"
             android:minHeight="40dp"
             android:textColor="#676767"

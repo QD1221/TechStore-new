@@ -121,7 +121,7 @@ public class LaptopActivity extends AppCompatActivity {
         });
     }
 
-    private void GetData(int Page) {
+        private void GetData(int Page) {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         String duongdan = Server.Duongdandienthoai + Page;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, duongdan, response -> {

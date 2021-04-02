@@ -357,6 +357,7 @@ public class MainActivity extends AppCompatActivity {
     private void GetDulieuspmoi() {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Server.Duongdanspmoi, response -> {
+//        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Server.Herokuspmoi, response -> {
             if (response != null){
                 int ID;
                 String Tensanpham, Hinhanhsanpham, Motasanpham;
@@ -387,7 +388,9 @@ public class MainActivity extends AppCompatActivity {
     private void GetDulieuspbanchay() {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Server.Duongdanspbanchay, response -> {
-            if (response != null){
+//        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Server.Herokuspbanchay, response -> {
+
+                if (response != null){
                 int ID;
                 String Tensanpham, Hinhanhsanpham, Motasanpham;
                 Integer Giasanpham;
@@ -427,7 +430,9 @@ public class MainActivity extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Server.DuongdanLoaisp, response -> {
-            if (response !=null){
+//        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Server.Herokuloaisp, response -> {
+
+                if (response !=null){
                 for (int i = 0; i<response.length(); i++){
                     try {
                         JSONObject jsonObject = response.getJSONObject(i);

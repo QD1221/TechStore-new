@@ -7,12 +7,15 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -22,8 +25,14 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.techstore.R;
+import com.example.techstore.model.ChiTietDonHangModel;
+import com.example.techstore.model.DonHangModel;
+import com.example.techstore.model.Sanpham;
 import com.example.techstore.ultil.CheckConnection;
 import com.example.techstore.ultil.Server;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,6 +48,8 @@ public class ThongtinKHActivity extends AppCompatActivity {
     EditText etTenKH,etSDT,etEmail;
     Button btXacnhan;
     ImageView btTrove;
+
+    String madonhang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +86,44 @@ public class ThongtinKHActivity extends AppCompatActivity {
                         final String sdt = etSDT.getText().toString().trim();
                         final String email = etEmail.getText().toString().trim();
                         if (ten.length() > 0 && sdt.length() > 0 && email.length() > 0) {
+
+                            DatabaseReference nodeRoot = FirebaseDatabase.getInstance().getReference();
+
+                            DatabaseReference nodeDonhang = nodeRoot.child("donhang");
+                            madonhang = nodeDonhang.push().getKey();
+
+                            DonHangModel donHangModel = new DonHangModel();
+                            donHangModel.setTenkhachhang(ten);
+                            donHangModel.setSodienthoai(sdt);
+                            donHangModel.setEmail(email);
+
+                            for (int i = 0; i < MainActivity.manggiohang.size(); i++) {
+                                ChiTietDonHangModel chiTietDonHangModel = new ChiTietDonHangModel();
+
+                                chiTietDonHangModel.setTensanpham(MainActivity.manggiohang.get(i).getTensp());
+                                chiTietDonHangModel.setGiasanpham(MainActivity.manggiohang.get(i).getGiasp());
+                                chiTietDonHangModel.setSoluongsanpham(MainActivity.manggiohang.get(i).getSoluongsp());
+
+                                nodeRoot.child("chitietdonhang").child(madonhang).push().setValue(chiTietDonHangModel);
+
+                            }
+
+                            nodeDonhang.child(madonhang).setValue(donHangModel).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(ThongtinKHActivity.this, "Them thanh cong", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+
+
+
+
+
+
+
+
+                            // PHP
                             RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
                             StringRequest stringRequest = new StringRequest(Request.Method.POST, Server.Duongdandonhang, new Response.Listener<String>() {
@@ -149,7 +198,7 @@ public class ThongtinKHActivity extends AppCompatActivity {
                 builder.setNegativeButton("Quay lại", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        dialog.dismiss();
                     }
                 });
 
@@ -166,6 +215,7 @@ public class ThongtinKHActivity extends AppCompatActivity {
         // Include dialog.xml file
         dialog.setContentView(R.layout.dialog_xacnhanthongtin);
         dialog.setCanceledOnTouchOutside(false);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         TextView tvdialog = dialog.findViewById(R.id.tvdialog);
         tvdialog.setOnClickListener(new View.OnClickListener() {
